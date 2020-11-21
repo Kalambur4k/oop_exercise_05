@@ -81,7 +81,7 @@ public:
 		std::weak_ptr<Node> ptr;
 	};
 
-	Queue(): head{nullptr}, tail{head}, size{0} {};
+
 
 	void Push(const T& val) {
 		if (!head) {
@@ -161,30 +161,7 @@ public:
 	    size--;
 		return res;
 	}
-/*
-	const T Front() {
-		if (head == nullptr)
-			throw std::out_of_range("Empty item");
-		return head->value;
-	}
 
-	const T& Front() const {
-		if (head == nullptr)
-			throw std::out_of_range("Empty item");
-		return head->value;
-	}
-
-	const T Back() {
-		if (head == nullptr)
-			throw std::out_of_range("Empty item");
-		return tail.lock()->value;
-	}
-
-	const T& Back() const {
-		if (head == nullptr)
-			throw std::out_of_range("Empty item");
-		return tail.lock()->value;
-	}*/
 
 	ForwardIterator Begin() {
 		return head;
@@ -194,24 +171,8 @@ public:
 		return ForwardIterator{};
 	}
 
-	bool Empty() const {
-		return size == 0;
-	}
-
 	size_t Size() const {
 		return size;
-	}
-
-	void Swap(Queue &rhs) {
-		std::shared_ptr<Node> temp = head;
-		head = rhs.head;
-		rhs.head = temp;
-	}
-
-	void Clear() {
-		head = nullptr;
-		tail = head;
-		size = 0;
 	}
 
 	void Print() {
